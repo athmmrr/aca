@@ -49,9 +49,7 @@ Route::get('/news/create', [NewsController::class, 'create'])->name('news.create
 Route::post('/news', [NewsController::class, 'store'])->name('news.store');
 
 // Edit Berita
-Route::get('/news/{id}/edit', [NewsController::class, 'edit'])->name('news.edit');
-Route::put('/news/{id}', [NewsController::class, 'update'])->name('news.update');
-
+Route::resource('news', NewsController::class);
 // Hapus Berita
 Route::delete('/news/{id}', [NewsController::class, 'destroy'])->name('news.destroy');
 
@@ -74,4 +72,7 @@ Route::get('/gallery', [GalleryController::class, 'index'])->name('gallery.index
 
 // Tambah Berita
 Route::get('/gallery/create', [GalleryController::class, 'create'])->name('gallery.create');
-Route::post('/news', [GalleryController::class, 'store'])->name('gallery.store');
+Route::post('/gallery/store', [GalleryController::class, 'store'])->name('gallery.store');
+Route::get('/gallery/edit/{id}', [GalleryController::class, 'edit'])->name('gallery.edit');
+Route::put('/gallery/update/{id}', [GalleryController::class, 'update'])->name('gallery.update');
+Route::delete('/gallery/{gallery}', [GalleryController::class, 'destroy'])->name('gallery.destroy');

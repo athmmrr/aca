@@ -16,8 +16,18 @@
 
 <body>
     <div class="container">
+    @if ($errors->any())
+        <div class="alert alert-danger">
+            <ul>
+                @foreach ($errors->all() as $error)
+                    <li>{{ $error }}</li>
+                @endforeach
+            </ul>
+        </div>
+    @endif
         <div class="d-flex flex-column p-4">
-            <form action="{{ route('news.store') }}" method="post" enctype="multipart/form-data">
+            <form action="{{ route('news.store') }}" method="POST" enctype="multipart/form-data">
+                @csrf
                 <div class="d-flex justify-content-between">
                     <div>
                         <h2>Add News</h2>
